@@ -46,6 +46,8 @@ function App() {
   };
   return (
     <View style={styles.view}>
+      <Text>Alimentando</Text>
+      <Text style={styles.name}>Júlia</Text>
       <View style={styles.rowButton}>
         <TouchableOpacity
           style={[styles.button, left === false ? styles.buttonInactive : null]}
@@ -71,18 +73,23 @@ function App() {
 const styles = StyleSheet.create({
   view: {
     margin: 20,
-    marginTop: 80,
+    marginTop: 60,
+  },
+  name: {
+    fontSize: 30,
+    fontWeight: 'bold',
   },
   rowButton: {
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'space-around',
+    marginTop: 20,
   },
   button: {
     backgroundColor: '#04AA6D',
     color: 'white',
     padding: 20,
-    borderRadius: 80,
+    borderRadius: 100,
   },
   buttonText: {
     fontSize: 30,
