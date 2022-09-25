@@ -7,7 +7,6 @@ import moment from 'moment';
 function App() {
   const [left, setLeft] = useState();
   const [right, setRight] = useState();
-  const [time, setTime] = useState();
   const [schedule, setSchedule] = useState();
 
   useEffect(() => {
@@ -17,12 +16,9 @@ function App() {
         const {amamentacao} = data;
         setLeft(amamentacao.left);
         setRight(amamentacao.right);
+        setSchedule(amamentacao.schedule);
       }
     });
-
-    let timeMoment = moment().format('HH:mm');
-    setTime(timeMoment);
-    setSchedule(moment().add(3, 'hours').format('HH:mm'));
   }, []);
 
   const leftSide = () => {
@@ -41,10 +37,11 @@ function App() {
       setRight(false);
       setLeft(true);
     }
-    console.log('$$$# ' + right);
+    setSchedule(moment().add(3, 'hours').format('HH:mm'));
     await set(ref(db, '/amamentacao'), {
       right,
       left,
+      schedule,
     });
   };
   return (
@@ -65,8 +62,7 @@ function App() {
         </TouchableOpacity>
       </View>
       <View style={styles.timeTexts}>
-        <Text style={styles.text}>Término: {time}</Text>
-        <Text style={styles.text}>Próximo horário: {schedule}</Text>
+        <Text style={styles.text}>Próximo horário: {schedule}h</Text>
       </View>
     </View>
   );
