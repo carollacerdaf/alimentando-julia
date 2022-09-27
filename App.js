@@ -8,6 +8,7 @@ function App() {
   const [left, setLeft] = useState();
   const [right, setRight] = useState();
   const [schedule, setSchedule] = useState();
+  const [time, setTime] = useState();
 
   useEffect(() => {
     onValue(ref(db), snapshot => {
@@ -17,6 +18,7 @@ function App() {
         setLeft(amamentacao.left);
         setRight(amamentacao.right);
         setSchedule(amamentacao.schedule);
+        setTime(amamentacao.time);
       }
     });
   }, []);
@@ -38,9 +40,11 @@ function App() {
       setLeft(true);
     }
     setSchedule(moment().add(3, 'hours').format('HH:mm'));
+    setTime(moment().format('HH:mm'));
     await set(ref(db, '/amamentacao'), {
       right,
       left,
+      time,
       schedule,
     });
   };
@@ -64,6 +68,7 @@ function App() {
         </TouchableOpacity>
       </View>
       <View style={styles.timeTexts}>
+        <Text style={styles.text}>Horário: {time}h</Text>
         <Text style={styles.text}>Próximo horário: {schedule}h</Text>
       </View>
     </View>
