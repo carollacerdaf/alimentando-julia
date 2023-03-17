@@ -56,7 +56,7 @@ function App() {
         <TouchableOpacity
           style={[styles.button, left === false ? styles.buttonInactive : null]}
           onPress={leftSide}>
-          <Text style={styles.buttonText}>E</Text>
+          <Text style={styles.buttonText}>Esquerdo</Text>
         </TouchableOpacity>
         <TouchableOpacity
           style={[
@@ -64,7 +64,7 @@ function App() {
             right === false ? styles.buttonInactive : null,
           ]}
           onPress={rightSide}>
-          <Text style={styles.buttonText}>D</Text>
+          <Text style={styles.buttonText}>Direito</Text>
         </TouchableOpacity>
       </View>
       <View style={styles.timeTexts}>
@@ -91,8 +91,7 @@ const styles = StyleSheet.create({
     marginTop: 20,
   },
   button: {
-    backgroundColor: '#04AA6D',
-    color: 'white',
+    color: 'black',
     padding: 20,
     borderRadius: 100,
   },
